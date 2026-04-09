@@ -1,8 +1,24 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+# ========================
+# IntelliJ IDEA
+# ========================
+.idea/
 
-# Ignore Gradle build output directory
-build
+# ========================
+# Gradle (Groovy DSL)
+# ========================
+.gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
-# Ignore Kotlin plugin data
-.kotlin
+# ========================
+# Logs
+# ========================
+*.log
+logs/
+
+# ========================
+# Variables de entorno
+# ========================
+.env
+.env.local
