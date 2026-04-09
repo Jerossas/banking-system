@@ -15,6 +15,12 @@ public class User {
         changePassword(password);
     }
 
+    private User(Long id, Email email, Password password){
+        this.id = id;
+        this.email = email;
+        this.password = password;
+    }
+
     public Long getId(){
         return this.id;
     }
@@ -43,5 +49,9 @@ public class User {
 
     public Password getPassword() {
         return password;
+    }
+
+    public static User restore(Long id, Email email, Password password){
+        return new User(id, email, password);
     }
 }
