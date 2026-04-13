@@ -9,4 +9,5 @@ dependencies {
     implementation project(':infrastructure')
 
     implementation 'org.springframework.boot:spring-boot-starter-webflux:4.1.0-M4'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
 }
