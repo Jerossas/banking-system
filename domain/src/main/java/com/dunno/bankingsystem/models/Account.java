@@ -35,6 +35,10 @@ public class Account {
         return userId;
     }
 
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
+
     public void modifyBalance(BigDecimal balance){
         BigDecimal newBalance = this.balance.add(balance);
 
