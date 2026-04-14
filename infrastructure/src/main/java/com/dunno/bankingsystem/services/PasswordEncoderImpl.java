@@ -1,7 +1,9 @@
 package com.dunno.bankingsystem.services;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
 
+@Service
 public class PasswordEncoderImpl implements PasswordEncoder {
 
     private final BCryptPasswordEncoder bcrypt;
