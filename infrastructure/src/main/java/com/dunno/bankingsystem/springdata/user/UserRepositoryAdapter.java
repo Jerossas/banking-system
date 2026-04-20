@@ -34,6 +34,16 @@ public class UserRepositoryAdapter implements UserRepository {
     }
 
     @Override
+    public Mono<User> findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .map(saved -> User.restore(
+                        saved.getId(),
+                        Email.fromStored(saved.getEmail()),
+                        Password.fromEncoded(saved.getPassword())
+                ));
+    }
+
+    @Override
     public Mono<Boolean> existsByEmail(String email) {
         return userRepository.existsByEmail(email);
     }
