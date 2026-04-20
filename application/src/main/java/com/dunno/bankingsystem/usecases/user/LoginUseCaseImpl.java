@@ -29,9 +29,10 @@ public class LoginUseCaseImpl implements LoginUseCase {
         Email email = Email.of(command.email());
 
         return userRepository.findByEmail(email.getValue())
+                .switchIfEmpty(Mono.error(new InvalidCredentialsException("Invalid email or password")))
                 .handle((user, sink) -> {
-                    if((user == null) || !this.passwordEncoder.matches(command.password(), user.getPassword().getValue())) {
-                        throw new InvalidCredentialsException("Invalid email or password");
+                    if(!this.passwordEncoder.matches(command.password(), user.getPassword().getValue())) {
+                        sink.error(new InvalidCredentialsException("Invalid email or password"));
                     } else {
                         sink.next(user);
                     }
