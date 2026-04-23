@@ -5,4 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface AccountRepository {
     Mono<Account> save(Account account);
+    Mono<Account> findByUserId(Long userId);
 }
