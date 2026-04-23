@@ -26,4 +26,14 @@ public class AccountRepositoryAdapter implements AccountRepository {
                         saved.getBalance()
                 ));
     }
+
+    @Override
+    public Mono<Account> findByUserId(Long userId) {
+        return accountRepository.findByUserId(userId)
+                .map(saved -> Account.restore(
+                        saved.getId(),
+                        saved.getUserId(),
+                        saved.getBalance()
+                ));
+    }
 }
